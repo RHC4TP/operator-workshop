@@ -30,16 +30,16 @@ EOF
 ```
 Create the pod by utilizing the manifest created above.
 
-`kubectl create -f pod-multi-container.yaml`
+`oc create -f pod-multi-container.yaml`
 
 View the details for the pod.
 
-`kubectl describe pod my-two-container-pod`
+`oc describe pod my-two-container-pod`
 
 
 Let's first execute a shell session inside the server container by using the -c flag.
 
-`kubectl exec -it my-two-container-pod -c server -- /bin/sh`
+`oc exec -it my-two-container-pod -c server -- /bin/sh`
 
 Run some commands inside the server container.
 
@@ -51,12 +51,24 @@ ps
 exit
 ```
 
+Let's now execute a shell session inside the side-car container.
+`oc exec -it my-two-container-pod -c side-car -- /bin/sh`
+
+Run the same commands in side-car container. Each container within a pod runs its own cgroup, but shares IPC, Network, and UTC (hostname) namespaces.
+
+```
+ip address
+netstat -tlpn
+hostname
+exit
+```
+
 Verify the currently available api options:
-`kubectl api-versions`
+`oc api-versions`
 
 Use the --v flag to set verbosity level. This will allow you to see the request/responses against the Kubernetes API.
 
-`kubectl got pods --v=8`
+`oc got pods --v=8`
 
 ### Basic Operations with the Kubernetes api
 
