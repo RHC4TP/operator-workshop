@@ -57,7 +57,7 @@ View the pods associated with the deployment.
 
 `oc get pods`
 
-### Create the service
+### Create the Service
 
 We will now expose this deployment as a Service.
 
@@ -88,6 +88,8 @@ Verify the service was successfully created.
 
 `oc get service`
 
+### Exposing the Service
+
 Expose the Service by creating the OpenShift Route manifest.
 
 ```
@@ -115,7 +117,7 @@ Create the route.
 Fetch the URL for the Openshift Route.
 
 ```
-ROUTE_HOST_URL=`oc get route simple-service-route -o jsonpath='{.spec.host}'
+ROUTE_HOST_URL=`oc get route simple-service-route -o jsonpath='{.spec.host}'`
 echo $ROUTE_HOST_URL`
 ```
 
