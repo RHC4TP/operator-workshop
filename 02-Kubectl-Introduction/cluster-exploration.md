@@ -3,7 +3,7 @@
 ## Kubectl Introduction
 
 ### Overview
-We use the `oc` command to interact with the Kubernetes cluster. The `kubectl` command will also work alongside OpenShift. If you are already familiar with Kubernets and `kubectl`, you will notice that OpenShift has almost identical commands. View the help to get started.
+We use the `oc` command to interact with the Kubernetes cluster. The `kubectl` command will also work alongside OpenShift. If you are already familiar with Kubernetes and `kubectl`, you will notice that OpenShift has almost identical commands. View the help to get started.
 
 `oc help`
 

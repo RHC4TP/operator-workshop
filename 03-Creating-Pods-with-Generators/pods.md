@@ -9,6 +9,10 @@ We use the `run` subcommand to run a Pod, Job, or a Deployment in a cluster. We 
 
 `oc run --help`
 
+As you can see, the output is quite extensive. You can pipe the stdout to `grep` to get a condensed output.
+
+`oc run --help | grep "restart policy"`
+
 Run a simple nginx web server pod.
 
 `oc run nginx --image nginx --restart=Never`
