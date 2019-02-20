@@ -2,7 +2,7 @@
 
 ## Instructions
 
-1. Write a YAML file called "nginx.yaml" with the following criteria:
+1. Write a YAML file called "nginx-pod.yaml" with the following criteria:
 
       a.) the resource kind is a Pod
       
