@@ -4,15 +4,15 @@
 
 1. Write a YAML file with the following criteria:
 
-      a.) the resource kind is a Pod
+            a.) the resource kind is a Pod
       
-      b.) the name of the resource is "nginx-test"
+            b.) the name of the resource is "nginx-test"
       
-      c.) the pod includes an empty volume directory named "data"
+            c.) the pod includes an empty volume directory named "data"
       
-      d.) the volume directory is mounted at /usr/share/nginx/html
+            d.) the volume directory is mounted at /usr/share/nginx/html
       
-      e.) the container image to be pulled is "nginx"
+            e.) the container image to be pulled is "nginx"
       
 2. Create the Pod resource within your cluster
 3. Verify the Pod is running
