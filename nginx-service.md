@@ -2,7 +2,7 @@
 
 ## Instructions
 
-1. Edit your previously create YAML file "nginx-pod.yaml" with the following criteria:
+1. Edit your previously created YAML file "nginx-pod.yaml" with the following criteria:
 
       a.) a label "app: nginx"
       
@@ -17,9 +17,10 @@
       c.) port set to 80 and a protocol of TCP
       
       d.) selector set to "app:nginx"
+      
 4. Create the service resouce within the cluster
 5. Check that the service is running
-6. Describe the service and note the IP address and TargetPort
+6. Inspect the service and note the IP address & TargetPort
 7. Curl the service's <IP_Address:Port>
       
 ## Solution
@@ -29,6 +30,8 @@
        kind: Pod
        metadata:
          name: nginx-test
+         labels:
+           app: nginx
        spec:
          volumes:
          - name: data
@@ -39,8 +42,10 @@
            volumeMounts:
            - name: data
              mountPath: /usr/share/nginx/html
+           ports:
+           - containerPort: 80
                   
-2. `oc create -f nginx.yaml`
+2. `oc apply -f nginx-pod.yaml`
 3. `oc get pods`
 4. `oc describe pod/nginx-test`
 5. `oc exec -it nginx-test -- /bin/bash`
