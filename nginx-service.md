@@ -13,7 +13,9 @@
       a.) the kind is set to Service
       
       b.) a label "app: nginx"
+      
       c.) port set to 80 and a protocol of TCP
+      
       d.) selector set to "app:nginx"
 4. Create the service resouce within the cluster
 5. Check that the service is running
@@ -23,20 +25,20 @@
 ## Solution
  
 1.
-            apiVersion: v1
-            kind: Pod
-            metadata:
-              name: nginx-test
-            spec:
-              volumes:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: nginx-test
+          spec:
+            volumes:
+            - name: data
+              emptyDir: {}
+            containers:
+            - name: nginx
+              image: nginx
+              volumeMounts:
               - name: data
-                emptyDir: {}
-              containers:
-              - name: nginx
-                image: nginx
-                volumeMounts:
-                - name: data
-                  mountPath: /usr/share/nginx/html
+                mountPath: /usr/share/nginx/html
                   
 2. `oc create -f nginx.yaml`
 3. `oc get pods`
