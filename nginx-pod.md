@@ -2,7 +2,7 @@
 
 ## Instructions
 
-1. Write a YAML file with the following criteria:
+1. Write a YAML file called "nginx.yaml" with the following criteria:
 
       a.) the resource kind is a Pod
       
@@ -16,9 +16,10 @@
       
 2. Create the Pod resource within your cluster
 3. Verify the Pod is running
-4. Enter a shell within the Nginx Pod
-5. write "Hello World" to a file located at: /usr/share/nginx/html/index.html
-6. send a GET request to the running nginx server. This should outout "Hello World". 
+4. Inspect the Pod
+5. Enter a shell within the Nginx Pod
+6. write "Hello World" to a file located at: /usr/share/nginx/html/index.html
+7. send a GET request to the running nginx server. This should outout "Hello World". 
 
       a.) apt-get update
       
@@ -29,3 +30,27 @@
       
 ## Solution
  
+1.
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nginx-test
+            spec:
+              volumes:
+              - name: data
+                emptyDir: {}
+              containers:
+              - name: nginx
+                image: nginx
+                volumeMounts:
+                - name: data
+                  mountPath: /usr/share/nginx/html
+                  
+2. `oc create -f nginx.yaml`
+3. `oc get pods`
+4. `oc describe pod/nginx-test`
+5. `kubectl exec -it nginx-test -- /bin/bash
+6. `echo Hello World > /usr/share/nginx/html/index.html
+7. `apt-get update`
+   `apt-get install curl`
+   `curl localhost`
