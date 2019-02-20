@@ -46,7 +46,7 @@
            - name: data
              mountPath: /usr/share/nginx/html
                   
-2. `oc create -f nginx.yaml`
+2. `oc create -f nginx-pod.yaml`
 3. `oc get pods`
 4. `oc describe pod/nginx-test`
 5. `oc exec -it nginx-test -- /bin/bash`
