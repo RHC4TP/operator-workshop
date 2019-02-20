@@ -25,20 +25,20 @@
 ## Solution
  
 1.
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          name: nginx-test
-        spec:
-          volumes:
-          - name: data
-            emptyDir: {}
-          containers:
-          - name: nginx
-            image: nginx
-            volumeMounts:
-            - name: data
-              mountPath: /usr/share/nginx/html
+       apiVersion: v1
+       kind: Pod
+       metadata:
+         name: nginx-test
+       spec:
+         volumes:
+         - name: data
+           emptyDir: {}
+         containers:
+         - name: nginx
+           image: nginx
+           volumeMounts:
+           - name: data
+             mountPath: /usr/share/nginx/html
                   
 2. `oc create -f nginx.yaml`
 3. `oc get pods`
