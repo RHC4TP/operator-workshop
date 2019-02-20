@@ -49,8 +49,8 @@
 2. `oc create -f nginx.yaml`
 3. `oc get pods`
 4. `oc describe pod/nginx-test`
-5. `kubectl exec -it nginx-test -- /bin/bash
-6. `echo Hello World > /usr/share/nginx/html/index.html
+5. `kubectl exec -it nginx-test -- /bin/bash`
+6. `echo Hello World > /usr/share/nginx/html/index.html`
 7. `apt-get update`
    `apt-get install curl`
    `curl localhost`
