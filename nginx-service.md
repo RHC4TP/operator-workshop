@@ -26,6 +26,7 @@
 8. Check that the service is running
 9. Inspect the service and note the IP address & TargetPort
 10. Curl the service's <IP_Address:TargetPort>
+11. Delete the resources created
       
 ## Solution
  
@@ -50,8 +51,8 @@
            - containerPort: 80
                   
 2. `oc create -f nginx-pod.yaml`
-3. `oc exec -it nginx-test /bin/bash
-4. `echo connection successful /usr/share/nginx/html/index.html`
+3. `oc exec -it nginx-test /bin/bash`
+4. `echo connection successful > /usr/share/nginx/html/index.html`
 5. `exit`
 6.
        apiVersion: v1
@@ -66,7 +67,8 @@
            protocol: TCP
          selector:
            app: nginx
-7. `oc create nginx-service.yaml`
+7. `oc create -f nginx-service.yaml`
 8. `oc get service`
-9. `oc describe service/nginx-service.yaml`
+9. `oc describe service/nginx-test.yaml`
 10. `curl <IP_address:TargetPort>`
+11. `kubectl delete -f nginx-pod` `kubectl delete -f nginx-service` 
