@@ -26,6 +26,7 @@
       b.) apt-get install curl
       
       c.) curl localhost
+8. Exit the shell and delete the resources created in your cluster
       
       
 ## Solution
@@ -54,3 +55,4 @@
 7. `apt-get update`
    `apt-get install curl`
    `curl localhost`
+8 `exit` `kubectl delete -f nginx-pod.yaml`
