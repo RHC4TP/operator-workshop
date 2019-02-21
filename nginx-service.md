@@ -8,8 +8,11 @@
       
       b.) expose the container port 80
       
-2. Apply the changes made for your Pod to the cluster
-3. Create a YAML file named "nginx-service.yaml" with the following criteria:
+2. Create the Pod
+3. Enter the Pod's shell
+4. Echo "connection successful" to /usr/share/nginx/html/index.html
+5. Exit the shell
+6. Create a YAML file named "nginx-service.yaml" with the following criteria:
 
       a.) the kind is set to Service
       
@@ -19,10 +22,10 @@
       
       d.) selector set to "app:nginx"
       
-4. Create the service resouce within the cluster
-5. Check that the service is running
-6. Inspect the service and note the IP address & TargetPort
-7. Curl the service's <IP_Address:TargetPort>
+7. Create the service resouce within the cluster
+8. Check that the service is running
+9. Inspect the service and note the IP address & TargetPort
+10. Curl the service's <IP_Address:TargetPort>
       
 ## Solution
  
@@ -46,8 +49,11 @@
            ports:
            - containerPort: 80
                   
-2. `oc apply -f nginx-pod.yaml`
-3.
+2. `oc create -f nginx-pod.yaml`
+3. `oc exec -it nginx-test /bin/bash
+4. `echo connection successful /usr/share/nginx/html/index.html`
+5. `exit`
+6.
        apiVersion: v1
        kind: Service
        metadata:
@@ -60,7 +66,7 @@
            protocol: TCP
          selector:
            app: nginx
-4. `oc create nginx-service.yaml`
-5. `oc get service`
-6. `oc describe service/nginx-service.yaml`
-7. `curl <IP_address:TargetPort>`
+7. `oc create nginx-service.yaml`
+8. `oc get service`
+9. `oc describe service/nginx-service.yaml`
+10. `curl <IP_address:TargetPort>`
