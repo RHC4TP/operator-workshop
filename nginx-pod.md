@@ -55,4 +55,5 @@
 7. `apt-get update`
    `apt-get install curl`
    `curl localhost`
-8 `exit` `kubectl delete -f nginx-pod.yaml`
+8 `exit` 
+  `kubectl delete -f nginx-pod.yaml`
