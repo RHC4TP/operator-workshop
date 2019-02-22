@@ -79,5 +79,5 @@
 4. `oc get pods -w -l app=nginx`
 5. `oc get statefulset`
    `oc get service`
-6. `oc describe service/<service-name>
-7. `curl <endpoint>
+6. `oc describe service/<service-name>`
+7. `curl <endpoint>`
