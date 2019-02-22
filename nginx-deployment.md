@@ -1,4 +1,4 @@
-# Creating an Nginx Pod
+# Creating an Nginx Deployment
 
 ## Instructions
 
