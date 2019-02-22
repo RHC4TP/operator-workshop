@@ -54,4 +54,4 @@
 4. `oc rollout status deployment/nginx-deployment`
 5. `oc delete pod/<pod-name>`
    `oc get pods`
-6. `oc delete -f nginx-deployment.yaml
+6. `oc delete -f nginx-deployment.yaml`
