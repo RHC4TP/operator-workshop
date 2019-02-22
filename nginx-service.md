@@ -71,4 +71,4 @@
 8. `oc get service`
 9. `oc describe service/nginx-test.yaml`
 10. `curl <IP_address:TargetPort>`
-11. `kubectl delete -f nginx-pod` `kubectl delete -f nginx-service` 
+11. `oc delete -f nginx-pod` `kubectl delete -f nginx-service` 
