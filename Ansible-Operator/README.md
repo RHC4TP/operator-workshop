@@ -237,11 +237,11 @@ kind: Memcached
 metadata:
   name: example-memcached
 spec:
-  #Fields here override what you have defined in the main.tsk file of your operator.
-  size: 5 #
+  #Fields here override what you have defined in the main.yml file of your operator.
+  size: 5
 ```
 
-Say we rewrite our CR to have a size of 5. You can redeploy your custom resource with by applying the new change with `oc`:
+Say we rewrite our CR to have a size of 5. You can redeploy your custom resource by applying the new change with `oc`:
 ```bash
 oc apply -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
 ```
