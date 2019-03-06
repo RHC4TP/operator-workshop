@@ -6,7 +6,7 @@
 
 Create a new pod manifest that specifies two containers.
 
-```
+```bash
 cat > pod-multi-container.yaml <<EOF
 apiVersion: v1
 kind: Pod
@@ -30,20 +30,26 @@ EOF
 ```
 Create the pod by utilizing the manifest created above.
 
-`oc create -f pod-multi-container.yaml`
+```bash
+oc create -f pod-multi-container.yaml
+```
 
 View the details for the pod.
 
-`oc describe pod my-two-container-pod`
+```bash
+oc describe pod my-two-container-pod
+```
 
 
 Let's first execute a shell session inside the server container by using the -c flag.
 
-`oc exec -it my-two-container-pod -c server -- /bin/sh`
+```bash
+oc exec -it my-two-container-pod -c server -- /bin/sh
+```
 
 Run some commands inside the server container.
 
-```
+```bash
 ip address
 netstat -tlpn
 hostname
@@ -52,11 +58,13 @@ exit
 ```
 
 Let's now execute a shell session inside the side-car container.
-`oc exec -it my-two-container-pod -c side-car -- /bin/sh`
+```bash
+oc exec -it my-two-container-pod -c side-car -- /bin/sh
+```
 
 Run the same commands in side-car container. Each container within a pod runs its own cgroup, but shares IPC, Network, and UTC (hostname) namespaces.
 
-```
+```bash
 ip address
 netstat -tlpn
 hostname
@@ -64,18 +72,24 @@ exit
 ```
 
 Verify the currently available api options:
-`oc api-versions`
+```bash
+oc api-versions
+```
 
 Use the --v flag to set verbosity level. This will allow you to see the request/responses against the Kubernetes API.
 
-`oc got pods --v=8`
+```bash
+oc got pods --v=8
+```
 
-### Basic Operations with the Kubernetes API
+### Basic Operations with the Kubernetes API (Advanced Topic)
 This section is just a demonstration of what you can do with the API once your k8s cluster is exposed. Similar to using the `oc` or `kubectl` commands, you can also control k8s by simply using `curl` and standard `HTTP` methods.
 
 Use the `kubectl proxy` command to proxy local requests on port 8001 to the Kubernetes API.
 
-`oc proxy --port=8001`
+```bash
+oc proxy --port=8001
+```
 
 Send a `GET` request to the Kubernetes API using `curl`.
 

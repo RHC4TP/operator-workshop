@@ -6,26 +6,36 @@ Scenario: Updating our example application from version 1.0.0 to version 2.0.0
 
 Verify the deployment exists.
 
-`oc get deployment`
+```bash
+oc get deployment
+```
 
 View the current pods
 
-`oc get pods`
+```bash
+oc get pods
+```
 
 Verify `1.0.0` of our simple app is up by navigating to the OpenShift Route URL.
 
-`oc get route simple-service-route`
+```bash
+oc get route simple-service-route
+```
 
 
 > Note: Open another terminal window and run the following to continually curl the OpenShift Route URL and highlight once our app has been updated to `2.0.0`: `while true; do curl -s $ROUTE_HOST_URL | egrep --color "v2.0.0|$"; sleep 1; done;`
 
 Set the new image for our deployment to `2.0.0`
 
-`oc set image deployment simple-deployment hieveryone=quay.io/coreostrainme/hieveryone:2.0.0 --record=true`
+```bash
+oc set image deployment simple-deployment hieveryone=quay.io/coreostrainme/hieveryone:2.0.0 --record=true
+```
 
 You should now see a deployment revision number indicating a record of the change.
 
-`oc rollout history deployment simple-deployment`
+```bash
+oc rollout history deployment simple-deployment
+```
 
 Open up your web browser and view the newly updated application.
 
@@ -34,7 +44,7 @@ Open up your web browser and view the newly updated application.
 
 Create the new deployment object manifest which adds **readiness probes**.
 
-```
+```bash
 cat > updated-deployment.yaml<<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -73,11 +83,15 @@ EOF
 ```
 Replace the simple-deployment.
 
-`oc replace -f updated-deployment.yaml`
+```bash
+oc replace -f updated-deployment.yaml
+```
 
 Set the image for the deployment to v2.0.0
 
-`oc set image deployment simple-deployment hieveryone=quay.io/coreostrainme/hieveryone:2.0.0 --record=true`
+```bash
+oc set image deployment simple-deployment hieveryone=quay.io/coreostrainme/hieveryone:2.0.0 --record=true
+```
 
 Readiness probes allow end users to experience seamless updates.
 
@@ -85,7 +99,7 @@ Readiness probes allow end users to experience seamless updates.
 
 Let's clean up the Deployment, Service, and Route.
 
-```
+```bash
 oc delete deployment simple-deployment
 oc delete service simple-service
 oc delete route simple-service-route

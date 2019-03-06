@@ -4,7 +4,7 @@
 
 We will deploy a simple, stateless Hello World application written in **golang**.
 
-```
+```bash
 cat > simple-deployment.yaml<<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -33,29 +33,41 @@ EOF
 
 Create the deployment based off our newly created deployment object mainifest file.
 
-`oc create -f simple-deployment.yaml --record=true`
+```bash
+oc create -f simple-deployment.yaml --record=true
+```
 
 Deployments keep track of any changes we make to our pod template and allow us to pause, resume, and rollback to previous configurations.
 
 View the rollout help.
 
-`oc rollout --help`
+```bash
+oc rollout --help
+```
 
 View rollout history.
 
-`oc rollout history deployment simple-deployment`
+```bash
+oc rollout history deployment simple-deployment
+```
 
 Get details about revision 1
 
-`oc rollout history deployment simple-deployment --revision=1`
+```bash
+oc rollout history deployment simple-deployment --revision=1
+```
 
 Verify the deployment was successfully created.
 
-`oc get deployments`
+```bash
+oc get deployments
+```
 
 View the pods associated with the deployment.
 
-`oc get pods`
+```bash
+oc get pods
+```
 
 ### Create the Service
 
@@ -63,7 +75,7 @@ We will now expose this deployment as a Service.
 
 Create the service object manifest file.
 
-```
+```bash
 cat > simple-service.yaml<<EOF
 kind: Service
 apiVersion: v1
@@ -82,17 +94,21 @@ EOF
 
 Create the deployment based off our newly created deployment object manifest file.
 
-`oc create -f simple-service.yaml`
+```bash
+oc create -f simple-service.yaml
+```
 
 Verify the service was successfully created.
 
-`oc get service`
+```bash
+oc get service
+```
 
 ### Exposing the Service
 
 Expose the Service by creating the OpenShift Route manifest.
 
-```
+```bash
 cat > simple-service-route.yaml <<EOF
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -112,11 +128,13 @@ EOF
 
 Create the route.
 
-`oc create -f simple-service-route.yaml`
+```bash
+oc create -f simple-service-route.yaml
+```
 
 Fetch the URL for the Openshift Route.
 
-```
+```bash
 ROUTE_HOST_URL=`oc get route simple-service-route -o jsonpath='{.spec.host}'`
 echo $ROUTE_HOST_URL`
 ```
