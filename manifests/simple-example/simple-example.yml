@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whalesay
+spec:
+  containers:
+  - name: whalesay
+    image: docker/whalesay
+    imagePullPolicy: "IfNotPresent"
+    command: ["cowsay", "Hello World"]
